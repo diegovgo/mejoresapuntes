@@ -53,7 +53,6 @@ request==2019.4.13
 requests==2.22.0
 six==1.12.0
 soupsieve==1.9.4
-SQLAlchemy==1.3.16
 sqlparse==0.3.0
 stream-django==1.6.1
 stream-python==3.1.0
