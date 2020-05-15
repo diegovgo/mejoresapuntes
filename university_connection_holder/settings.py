@@ -83,7 +83,8 @@ WSGI_APPLICATION = 'university_connection_holder.wsgi.application'
 
 import dj_database_url
 from decouple import config
-DATABASE = {
+
+DATABASES = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL')
     )
