@@ -1,0 +1,20 @@
+.titleTask {
+    font-size: 24px;
+}
+
+#note-container {
+    display: inline-flex;
+    background-color:black;
+    border-radius: 25px;
+    opacity: 80%;
+    margin: 20px;
+}
+
+#Task {
+    width: 300px;
+    margin: 20px;
+    height: 100px;
+    color: white;
+}
+
+    

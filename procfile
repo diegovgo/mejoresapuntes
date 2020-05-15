@@ -1,0 +1,1 @@
+web: gunicorn university_connection_holder.wsgi --log-file -

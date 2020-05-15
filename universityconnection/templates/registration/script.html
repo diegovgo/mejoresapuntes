@@ -1,0 +1,23 @@
+<html>
+
+<head>
+  <title>test</title>
+</head>
+
+<body>
+  test
+  <script>
+
+    var cursos;
+
+    function setup() {
+      url = '127,0,0,1:8000/api/cursos/'
+      cursos = loadJSON(url);
+    }
+
+    function gotData() {
+      console.log(cursos.name);
+    } 
+  </script>
+</body>
+</html>

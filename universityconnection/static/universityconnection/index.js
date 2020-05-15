@@ -1,0 +1,1 @@
+$('#navuser').hide();

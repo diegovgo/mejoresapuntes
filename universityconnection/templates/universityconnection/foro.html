@@ -1,0 +1,38 @@
+{% extends "universityconnection/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block heading %}
+{% endblock %}
+
+{% block body %}
+<h1>
+  postea en el foro de ayuda!!!
+</h1>
+<div style="display: inline-flex; " class="container">
+  
+  <div style="width:100%" class="container">
+    <form method="post">
+      {% csrf_token %}
+      {% if form.errors %}
+      <p>Hay errores en el formulario</p>
+      {% endif %}
+
+      {{ form | crispy }}
+
+      <div class="float right">
+        <input type="submit" value="Postear" class="btn btn-info">
+      </div>
+    </form>
+  </div>
+
+    <div class="container">
+      {% for post in posts %}
+      <div style="background-color:skyblue; padding:25px; border-radius:25px; margin: 30px">
+        <h1> {{post.title }}</h1>
+        <p> {{post.text }} </p>
+      </div>
+      {% endfor %}
+    </div>
+</div>
+{% endblock %}

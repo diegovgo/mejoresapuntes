@@ -1,0 +1,28 @@
+{% extends "universityconnection/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block heading %}
+{% endblock %}
+
+{% block body %}
+<br>
+    {% if form.errors %}
+    <p>There is something wrong.</p>
+    {% endif %}
+
+    {% if next %}
+    <p>Puedes acceder a toda la información</p>
+    {% endif %}
+    <div class="container">
+    <form method="post">
+        {% csrf_token %}
+
+      {{ form | crispy }}
+<div class="float-right">
+    <input type="submit"  value="login" class="btn btn-info">
+    <input type="hidden" value="next" value="{{ next }}">
+  </div>
+    </form>
+  </div>
+{% endblock %}

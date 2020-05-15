@@ -1,0 +1,41 @@
+{% extends "universityconnection/base.html" %}
+{% block heading %}
+{% load static %}
+
+{% endblock %}
+
+{% block body %}
+<br>
+
+<h1 id="displayall">Cursos</h1>
+<!--
+{% for course in courses %}
+  <div class="course-title" data-value="{{ course.id }}"><span ="{{ course.id }}" class="course-title-id" style="display:None">{{ course.id }}</span> {{ course.name }} </div>
+{% endfor %}
+-->
+{% for course in courses %}
+  <h1> {{ course.name }} </h1>
+    {% for file in files %}
+    {% if course.id == file.course.id %}
+      <div class="card" style="width: 14rem; margin:25px;display: inline-flex;">
+      <img class="card-img-top" src="{% static 'universityconnection/books.jpg' %}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><h4>{{ file.title }}</h4></h5>
+        <h5 class="card-title">${{ file.price }}</h5>
+        <p class="card-text">{{ file.course }}</p>
+        <a href="{% url 'file' file.id %}" class="btn btn-primary">Cómpralo ahora</a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{{ file }}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="{% static 'universityconnection/courses.js' %}">
+
+</script>
+
+{% endblock %}

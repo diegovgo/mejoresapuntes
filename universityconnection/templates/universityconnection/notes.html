@@ -1,0 +1,58 @@
+{% extends "universityconnection/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'universityconnection/apuntes.css' %}">
+<link rel="stylesheet" href="{% static 'universityconnection/note.css' %}">
+{% endblock %}
+{% block heading %}
+{% endblock %}
+
+{% block body %}
+
+<div class="form-popup" id="apuntesForm">
+    <form class="form-container" method="post">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <div class="container">
+            <input type="reset" value="Cancelar" class="btn cancel" onclick="closeNoteForm()">
+            <input type="submit" value="Save" class="btn btn-info">
+        </div>
+    </form>
+</div>
+
+<h1>
+    Mis Notas Personales
+
+
+    {% for course in courses %}
+    <h1> {{ course.name }} </h1>
+    {% for note in notes %}
+    {% if course.id == note.course.id %}
+<div style="background-color:{{ note.color }}" id="note-container">
+        <div id="Task">
+            <div class="titleTask"><strong>{{ note.title }}</strong></div>
+            <div class="noteTask">{{ note.note|truncatewords:100 }}</div>
+        </div>
+    </div>
+    {% endif %}
+  
+    {% endfor %}
+
+    {% endfor %}
+
+    <button class="open-button1" onclick="openNoteForm()">Agregar Nota</button>
+
+    <div style="display:None">
+        {% for course in courses %}
+        <option value="{{ course.id }}"class="mycoursesform">{{ course.name }}</option>
+        {% endfor %}
+      </div>
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="{% static 'universityconnection/jquery-3.5.0.js' %}"></script>
+
+    <script src="{% static 'universityconnection/note.js' %}"></script>
+
+    {% endblock %}

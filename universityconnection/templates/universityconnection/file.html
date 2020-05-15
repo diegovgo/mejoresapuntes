@@ -1,0 +1,11 @@
+{% extends "universityconnection/base.html" %}
+{% load static %}
+{% block body %}
+
+<h1>Archivo: {{ file.title }} </h1>
+{{ file.description }}
+<div class="container">
+    <embed src='{{ file.file.url }}' type="application/pdf" width="100%" height="600px" />
+</div>
+
+{% endblock %}
