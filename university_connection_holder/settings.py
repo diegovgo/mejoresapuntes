@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'import_export',
     'rest_framework',
     'crispy_forms',
+    'storages'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -137,7 +138,17 @@ STATICFILES_DIRS = (
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_URL = '/media/'
+
+#S3 BUCKETS CONFIG
+AWS_ACCESS_KEY_ID = 'AKIA3T2S6CW2VSV43XP4'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'mejoresapuntes-data-files'
+AWS_S3_FILE_OVERWRITE = True
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
 
 LOGIN_REDIRECT_URL = '/'
 
