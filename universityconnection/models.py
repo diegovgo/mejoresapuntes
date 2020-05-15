@@ -34,7 +34,7 @@ class MyUser(models.Model):
     university = models.ManyToManyField(University, related_name="myuser")
     career = models.ManyToManyField(Career, related_name="myuser")
     course = models.ManyToManyField(Course, related_name="myuser")
-    profile_picture = models.ImageField(upload_to="media/users/profile_picture", blank=True, default="users/profile_picture/nophoto.jpg")
+    profile_picture = models.ImageField(upload_to="static/users/profile_picture", blank=True, default="users/profile_picture/nophoto.jpg")
     
     def __str__(self):
         return self.username
