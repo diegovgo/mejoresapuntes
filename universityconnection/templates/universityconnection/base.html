@@ -18,7 +18,7 @@
   <div id="navuser">
     {% if user.is_authenticated %}
     <a class="profile" id="ajustesperfil" href="#">
-    <div id="profilepic" style="background-image: url('{{ profilepicture }}'); background-position: center center; background-repeat: no-repeat; background-size: cover; width: 150px; height: 150px; border-radius: 100%; position:absolute; margin-right:15px margin"></div>
+    <div id="profilepic" style="background-image: url('{{ profilepicture.url }}'); background-position: center center; background-repeat: no-repeat; background-size: cover; width: 150px; height: 150px; border-radius: 100%; position:absolute; margin-right:15px margin"></div>
   </a>
     {% endif %}
   </div>

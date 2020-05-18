@@ -31,10 +31,10 @@ class MyUser(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE, related_name="myuser")
     username = models.CharField(max_length=64, default="0")
     bio = models.CharField(max_length=144, blank=True, null=True)
-    university = models.ManyToManyField(University, related_name="myuser")
-    career = models.ManyToManyField(Career, related_name="myuser")
-    course = models.ManyToManyField(Course, related_name="myuser")
-    profile_picture = models.ImageField(upload_to="static/users/profile_picture", blank=True, default="users/profile_picture/nophoto.jpg")
+    university = models.ManyToManyField(University, related_name="myuser",blank=True, null=True)
+    career = models.ManyToManyField(Career, related_name="myuser",blank=True, null=True)
+    course = models.ManyToManyField(Course, related_name="myuser",blank=True, null=True)
+    profile_picture = models.ImageField(upload_to="users/profile_picture", blank=True, default="users/profile_picture/nophoto.jpg")
     
     def __str__(self):
         return self.username

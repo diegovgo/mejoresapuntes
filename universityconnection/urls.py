@@ -24,4 +24,6 @@ urlpatterns = [
     path('configuracion/', views.settings, name="configuracion"),
     path('notas', views.note, name="notes"),
     path('file/<id>/', views.fileview, name="file"),
+    path('registration', views.registrationsteptwo, name="registration_step_2"),
+
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

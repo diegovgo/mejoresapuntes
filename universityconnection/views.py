@@ -128,13 +128,31 @@ def register(request):
             form.save()
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
+            #user_id = request.user
+            #MyUser(user=request.user, username=username)
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect(to='index')
+            return redirect(to='registration_step_2')
 
     return render(request, 'registration/register.html', data)
 
+@login_required
+def registrationsteptwo(request):
+        user_id = request.user.id
+        data = { 
+            'form': MyUserForm
+                }
+        if request.method =="POST":
+            form = MyUserForm(request.POST)
+            if form.is_valid():
+                m = form.save(commit=False)
+                m.user = request.user
+                m.save()
+                data['mensaje']= "guardado corretamente"
+                data['form']= form
+                return redirect(to='index')
 
+        return render(request, 'universityconnection/registration2.html', data )
 
 def foro(request):
     data = {

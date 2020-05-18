@@ -1,5 +1,5 @@
 const getUniversityData = () => {
-    axios.get('http://127.0.0.1:8000/api/university').then(response => {
+    axios.get('https://mejoresapuntes1.herokuapp.com/api/university/').then(response => {
         response.data.map(element => {
             let name = element.name;
             let u_id = element.id;
@@ -16,7 +16,7 @@ $("select[name='university']").change(
 $("select[name='university']").change(function () {
     $("select[name='course']").empty();
     $("select[name='career']").empty();
-    axios.get('http://127.0.0.1:8000/api/career').then(response => {
+    axios.get('https://mejoresapuntes1.herokuapp.com/api/career/').then(response => {
         response.data.map(element => {
             let name = element.name;
             let u_id = element.university;
@@ -37,7 +37,7 @@ var CurrentCareerID;
 
 $("select[name='career']").change(function () {
     $("select[name='course']").empty();
-    axios.get('http://127.0.0.1:8000/api/cursos').then(response => {
+    axios.get('https://mejoresapuntes1.herokuapp.com/api/cursos/').then(response => {
         response.data.map(element => {
             let id = element.id;
             let name = element.name;
