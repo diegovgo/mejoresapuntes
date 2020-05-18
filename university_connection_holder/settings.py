@@ -138,6 +138,9 @@ STATICFILES_DIRS = (
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
 
 #S3 BUCKETS CONFIG
 AWS_ACCESS_KEY_ID = 'AKIA3T2S6CW2VSV43XP4'
