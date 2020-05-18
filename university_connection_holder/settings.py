@@ -42,7 +42,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'university_connection_holder.urls'
@@ -69,7 +68,7 @@ WSGI_APPLICATION = 'university_connection_holder.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -81,15 +80,15 @@ DATABASES = {
 
     }
 }
+'''
+import dj_database_url
+from decouple import config
 
-#import dj_database_url
-#from decouple import config
-#
-#DATABASES = {
-    #'default': dj_database_url.config(
-        #default=config('DATABASE_URL')
-    #)
-#}
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
