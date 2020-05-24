@@ -52,6 +52,21 @@ class File(models.Model):
     def __str__(self):
         return self.title
 
+class Filecomment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="filecomment")
+    file = models.ForeignKey(File, on_delete=models.CASCADE, related_name="comment")
+    comment = models.TextField()
+
+    def __str__(self):
+        return self.comment
+
+class Commentocomment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comment")
+    parent_comment = models.ForeignKey(Filecomment, on_delete=models.CASCADE, related_name="response")
+    response = models.TextField()
+
+    def __str__(self):
+        return self.response
 class Note(models.Model):
     title = models.CharField(max_length=100)
     note = models.CharField(max_length=240)

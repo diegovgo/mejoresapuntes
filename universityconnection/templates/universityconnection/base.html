@@ -22,17 +22,17 @@
   </a>
     {% endif %}
   </div>
-  <div id="navbar">
+  <div id="navbar" style="border-radius:20px">
     <a class="navgeneral" href="{% url 'index' %}">Home</a>
     <a class="navgeneral" id="course" href="{% url 'mycourses' %}">Banco de Archivos</a>
     <a class="navgeneral" id="apuntes" href="{% url 'addnote' %}">Mis Apuntes</a>
-    <a class="navgeneral" id="notas" href="{% url 'notes' %}">Mis Notas</a>
-    <a class="navgeneral" id="forum" href="{% url 'foro' %}">Foro</a>
+    <a class="navgeneral" id="notas" href="{% url 'notes' %}" style="display:None">Mis Notas</a>
+    <a class="navgeneral" id="forum" href="{% url 'foro' %}" style="display:None">Foro</a>
     {% if user.is_authenticated %}
     <a >{{ user.first_name }} {{ user.last_name }}</a>
     <a id="plays" style="display:None"> {{ user.id }}</a>
     <a href="{% url 'logout' %}">Cerrar sesión</a>
-    <a href="{% url 'misventas' %}">Mis ventas</a>
+    <a href="{% url 'misventas' %}" style="display:None">Mis ventas</a>
     <a href="{% url 'configuracion' %}">Configuración</a>
     {% else %}
     <a  href="{% url 'register' %}">Registrarse</a>

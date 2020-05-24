@@ -28,13 +28,12 @@
       {% for file in files %}
       {% if course.id == file.course.id %}
     <div class="card" style="width: 14rem; margin:25px;display: inline-flex;">
-      <img class="card-img-top" src="{% static 'universityconnection/books.jpg' %}" alt="Card image cap">
+      <img class="card-img-top" src="{% static 'universityconnection/file_img.png' %}" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{ file.title }}</h5>
         <h5 class="card-title">$ {{ file.price }}</h5>
         <p class="card-text">{{ file.course }}</p>
-        <a href="{{ file.link }}" class="btn btn-primary">Comprar ahora</a>
-        {% if file.}
+        <a href="{% url 'file' file.id %}" class="btn btn-primary">Ver Ahora</a>
       </div>
     </div>
   </div>

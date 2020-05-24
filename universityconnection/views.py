@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from universityconnection.models import University, Course, File, Note, Post, Comment, Subject, Career, MyUser
+from universityconnection.models import University, Course, File, Note, Post, Comment, Subject, Career, MyUser, Filecomment
 from django.http import HttpResponseRedirect, HttpResponse
-from .forms import NoteForm, CustomUserForm, CreatePostForm, FileForm, MyUserForm
+from .forms import NoteForm, CustomUserForm, CreatePostForm, FileForm, MyUserForm, FilecommentForm, CommentocommentForm
 from rest_framework import viewsets
 from .serializers import CourseSerializer, FileSerializer, NoteSerializer, MyUserSerializer, UniversitySerializer, CareerSerializer
 from django.contrib.auth.decorators import login_required, permission_required
@@ -222,12 +222,48 @@ def note(request):
 
 def fileview(request, id):
     file = File.objects.get(id=id)
+    comments = Filecomment.objects.filter(file=file)
+    responses = []
+    for i in range(len(comments)):
+        c = comments[i]
+        responses_to_add = c.response.all()
+        responses.extend(responses_to_add)
     data = {
-        'file': file
+        'file': file,
+        'form': FilecommentForm(),
+        'comments': comments,
+        'responses': responses,
     }
+    if request.method == "POST":
+        form = FilecommentForm(request.POST)
+        if form.is_valid():
+            f = form.save(commit=False)
+            f.user = request.user
+            f.file = File.objects.get(id=id)
+            f.save()
+            return HttpResponseRedirect(request.path_info)
+
+
     return render(request, 'universityconnection/file.html', data)
 
 
+def comment(request, id):
+    comment = Filecomment.objects.get(id=id)
+    
+    data = {
+        'comment': comment,
+        'responseform': CommentocommentForm(),
+    }
+    if request.method == "POST":
+        form = CommentocommentForm(request.POST)
+        if form.is_valid():
+            f = form.save(commit=False)
+            f.user = request.user
+            f.parent_comment = Filecomment.objects.get(id=id)
+            f.save()
+            return HttpResponseRedirect(request.path_info)
+    
+    return render(request, 'universityconnection/comment.html', data)
 
 
 
