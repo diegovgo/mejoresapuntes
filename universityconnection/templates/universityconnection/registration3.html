@@ -1,0 +1,46 @@
+{% extends "universityconnection/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block heading %}
+<link rel="stylesheet" href="registration2.css">
+{% endblock %}
+
+{% block body %}
+<!--<h1>With Js</h1>
+<select name="universities"> 
+</select><button id="universitybutton">aaa</button>
+ <h1>Carrera</h1>
+<select name="career" aria-placeholder="escoge tu carrera">
+</select>
+<br>
+<h1>Cursos</h1>
+<span id="coursetoselect"></span>
+
+<p>I want a <span id="genderSpan"></span> <span id="speciesSpan"></span><span id="featuredSpan"></span>-->
+    <h1 style="text-align: center; color:#333">Configuración de cuenta</h1>
+    <div class="welcome" style ="text-align: center; background-color:#333; border-top: 0px; border-radius: 25px; color:white">
+<h2>Hola, {{ user.username }}</h2>
+</div>
+<div class="container shadow p-3 mb-5 bg-white rounded">
+    <form method='post' enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ coursesform | crispy }}
+    <input type="submit" value="Enviar">
+    </form>
+    </div>
+<script>
+    document.getElementById("div_id_profile_picture").innerHTML="";
+    document.getElementById("div_id_course").innerHTML="";
+    document.getElementById("div_id_bio").innerHTML="";
+    document.getElementById("navbar").innerHTML="";
+    document.getElementById("navuser").innerHTML="";
+     
+
+    
+</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="{% static 'universityconnection/jquery-3.5.0.js' %}"></script>
+<script src="{% static 'universityconnection/config.js' %}"></script>
+{% endblock %}
