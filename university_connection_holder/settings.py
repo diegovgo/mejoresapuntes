@@ -3,12 +3,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-<<<<<<< HEAD
-
-
-=======
-CORS_ORIGIN_ALLOW_ALL = True
->>>>>>> 3e06f01827cc8eedc7ca6f30edba4d6bf075b551
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
