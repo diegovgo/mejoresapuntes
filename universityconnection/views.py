@@ -149,7 +149,6 @@ def registrationsteptwo(request):
                 m.user = request.user
                 m.save()
                 data['mensaje']= "guardado corretamente"
-                data['form']= form
                 return redirect(to='index')
 
         return render(request, 'universityconnection/registration2.html', data )
