@@ -1,7 +1,7 @@
 console.log('done btchhhhh')
 
-$("select[name='course']").empty();
-$(".mycoursesform").clone().appendTo("select[name='course']");
+$("select[name='apuntes']").empty();
+$(".myapuntessform").clone().appendTo("select[name='apuntes']");
 
 var current_user_id = $("select[name='plays']").val();
 
@@ -25,10 +25,10 @@ function openNoteForm() {
 
 /*  const titles = []
 
-var userCourses;
+var userapuntess;
 
 let Loop = () => {
-  for (var i = 0 ; i < userCourses.length; i++) {
+  for (var i = 0 ; i < userapuntess.length; i++) {
   console.log(i);
   console.log(1);
 }
@@ -51,19 +51,19 @@ const aaba = () => {
 });
 }
 
-const CourseData = () => {
+const apuntesData = () => {
     axios.get('http://127.0.0.1:8000/api/myuser').then(response => {
         response.data.filter(element =>{
           let user = element.user;
           let c_u = $("#plays").html();
-          let courses = element.course;
+          let apuntess = element.apuntes;
           if (user == c_u) {
-            userCourses = courses;
-            console.log(courses);
+            userapuntess = apuntess;
+            console.log(apuntess);
           }
         });
         Loop2();
-        UserCourses.forEach(element => {
+        Userapuntess.forEach(element => {
           if ($("option").val()){
             $("option").removeClass();
           }
@@ -75,7 +75,7 @@ const sendData = () => {
     axios.post('http://127.0.0.1:8000/api/notas');
 }
 
-CourseData();
+apuntesData();
 
 
 
@@ -84,7 +84,7 @@ CourseData();
 /*
 $("option").addClass(function() {
    let option = $(this).val();
-   if (option == user_courses){
+   if (option == user_apuntess){
      $(this).removeClass();
    }});
 */
@@ -97,9 +97,8 @@ $("option").addClass(function() {
 //getData();
 
 
-$('#apuntes').removeClass();
-$('#apuntes').addClass("nav-item active");
 $('#apuntes').css("background-color", "lightgray");
+$('#apuntes').css("color", "black");
 $('#apuntes').hide();
 $('#apuntes').show(400);
 
