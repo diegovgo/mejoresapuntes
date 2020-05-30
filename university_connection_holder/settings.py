@@ -12,7 +12,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 SECRET_KEY = 't#%(i136u)60@n$zusz=#z&88r8fz6+e)26(=_7zyrj^4m*#ug'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -69,7 +69,7 @@ WSGI_APPLICATION = 'university_connection_holder.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -90,7 +90,7 @@ DATABASES = {
         default=config('DATABASE_URL')
     )
 }
-
+'''
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
